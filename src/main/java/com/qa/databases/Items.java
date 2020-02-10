@@ -3,9 +3,9 @@ package com.qa.databases;
 public class Items {
 	private Long id;
 	private String itemName;
-	private String itemValue;
+	private double itemValue;
 	
-	public Items(Long id, String itemName, String itemValue) {
+	public Items(Long id, String itemName, double itemValue) {
 		this.setId(id);
 		this.setItemName(itemName);
 		this.setItemValue(itemValue);
@@ -27,11 +27,11 @@ public class Items {
 		this.itemName = itemName;
 	}
 
-	public String getItemValue() {
+	public double getItemValue() {
 		return itemValue;
 	}
 
-	public void setItemValue(String itemValue) {
+	public void setItemValue(double itemValue) {
 		this.itemValue = itemValue;
 	}
 

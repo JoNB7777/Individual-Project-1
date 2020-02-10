@@ -13,8 +13,13 @@ public class CustomersDaoMysql implements Dao<Customers>{
 	public CustomersDaoMysql() throws SQLException {
 		this.connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/IMSDB", "root", "root"); 
 	}
-	public void create(Customers t) {
-		// TODO Auto-generated method stub
+	public void create(Customers customer) {
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("insert into customers(name) values('" + customer.getName() + "')");
+		} catch (Exception e) {
+			
+		} 
 		
 	}
 	public ArrayList<Customers> readAll() {

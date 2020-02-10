@@ -27,7 +27,8 @@ public class OrdersDaoMysql implements Dao<Orders> {
 			while (resultSet.next()) {
 				Long id = resultSet.getLong("id");
 				Long customerId = resultSet.getLong("customerId");
-				int cost = resultSet.getInt("cost");
+				double cost= resultSet.getDouble("cost");
+				Orders order = new Orders(id, customerId, cost);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -7,36 +7,39 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ItemsDaoMysql implements Dao<Items> {
-
+public class OrderItemsDaoMysql implements Dao<OrderItems> {
+	
 	private Connection connection;
-	public ItemsDaoMysql() throws SQLException {
+	public OrderItemsDaoMysql() throws SQLException {
 		this.connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/IMSDB", "root", "root"); 
 	}
-	public void create(Items t) {
+
+	public void create(OrderItems t) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public ArrayList<Items> readAll() {
-		ArrayList<Items> items = new ArrayList<Items>();
+	public ArrayList<OrderItems> readAll() {
+		ArrayList<OrderItems> orderItems = new ArrayList<OrderItems>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from items");
+			ResultSet resultSet = statement.executeQuery("select * from order_items");
 			while (resultSet.next()) {
 				Long id = resultSet.getLong("id");
-				String itemName = resultSet.getString("name");
+				Long itemId = resultSet.getLong("item_id");
 				double itemValue = resultSet.getDouble("item_value");
-				Items item = new Items(id, itemName, itemValue);
-				items.add(item);
+				int quantity = resultSet.getInt("quantity");
+				Long orderId = resultSet.getLong("order_id");
+				OrderItems orderItem = new OrderItems(id, itemId, itemValue, quantity, orderId);
+				orderItems.add(orderItem);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		return items;
+		return orderItems;
 	}
 
-	public void update(Items t) {
+	public void update(OrderItems t) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -4,9 +4,9 @@ public class Orders {
 	
 	private Long id;
 	private Long customerId;
-	private int price;    // need to rename cost to price in database
+	private double price;    // need to rename cost to price in database
 	
-	public Orders(Long id, Long customer_id, int price) {
+	public Orders(Long id, Long customer_id, double price) {
 		this.setId(id);
 		this.setCustomerId(customer_id);
 		this.setPrice(price);
@@ -26,10 +26,10 @@ public class Orders {
 		this.customerId = customer_id;
 	}
 	
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
