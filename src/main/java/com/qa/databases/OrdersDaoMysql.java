@@ -14,8 +14,13 @@ public class OrdersDaoMysql implements Dao<Orders> {
 		this.connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/IMSDB", "root", "root"); 
 	}
 	
-	public void create(Orders t) {
-		// TODO Auto-generated method stub
+	public void create(Orders order) {
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("insert into orders(name) values('" + order.getCustomerId() + "')");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 	}
 

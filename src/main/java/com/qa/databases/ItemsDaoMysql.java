@@ -13,8 +13,13 @@ public class ItemsDaoMysql implements Dao<Items> {
 	public ItemsDaoMysql() throws SQLException {
 		this.connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/IMSDB", "root", "root"); 
 	}
-	public void create(Items t) {
-		// TODO Auto-generated method stub
+	public void create(Items item) {
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("insert into items(name) values('" + item.getItemName() + "')");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 	}
 

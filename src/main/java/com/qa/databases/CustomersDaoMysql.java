@@ -18,7 +18,7 @@ public class CustomersDaoMysql implements Dao<Customers>{
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("insert into customers(name) values('" + customer.getName() + "')");
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		} 
 		
 	}
