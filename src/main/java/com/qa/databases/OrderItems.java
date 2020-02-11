@@ -1,6 +1,12 @@
 package com.qa.databases;
 
 public class OrderItems {
+	/**
+	 * The purpose of this class is to store data about all the items in a given order in one of its class objects
+	 * The class attributes are the id (id of a given item in an order), itemId (the Id that particular item has in the system),
+	 * itemValue (the price of that item), quantity (the quantity of that item that has been ordered)
+	 * and orderId ( the id the order this item is a part of has in the system)
+	 */
 	private Long id;
 	private Long itemId;
 	private double itemValue;

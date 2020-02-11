@@ -1,6 +1,10 @@
 package com.qa.databases;
 
 public class Customers {
+	/**
+	 * Customer class is used to save customer data in its class instances
+	 * Attributes are the id (the Customer Id) and the customer's name
+	 */
 	
 	private Long id;
 	private String name;

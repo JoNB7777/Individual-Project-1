@@ -1,6 +1,11 @@
 package com.qa.databases;
 
 public class Orders {
+	/**
+	 * This class exists to save details about given orders in the class objects
+	 * Attributes are the id (the id an order has in the system), the customerId (the Customer Id of the customer who placed the order)
+	 * and the price of the order
+	 */
 	
 	private Long id;
 	private Long customerId;

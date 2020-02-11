@@ -15,6 +15,11 @@ public class OrderItemsDaoMysql implements Dao<OrderItems> {
 	}
 
 	public void create(OrderItems orderItem) {
+		/**
+		 * creates an entry in the order_item table
+		 * parameter orderItem: is an instance of the OrderItem
+		 * The individual orderItems variables are the entries for the individual columns of the new row in the table
+		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("insert into order_items(id) values('" + orderItem.getId() + "')");
