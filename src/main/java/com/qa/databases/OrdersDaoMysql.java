@@ -18,6 +18,10 @@ public class OrdersDaoMysql implements Dao<Orders> {
 	}
 	
 	public void create(Orders order) {
+		/**
+		 * creates a new entry in the orders table
+		 * order is an instance of the Orders class in which the details for the new entry to be created are stored
+		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("insert into orders(name) values('" + order.getCustomerId() + "')");
@@ -28,6 +32,9 @@ public class OrdersDaoMysql implements Dao<Orders> {
 	}
 
 	public ArrayList<Orders> readAll() {
+		/**
+		 * reads an entry from the orders table
+		 */
 		ArrayList<Orders> orders = new ArrayList<Orders>();
 		try {
 			Statement statement = connection.createStatement();
@@ -37,6 +44,7 @@ public class OrdersDaoMysql implements Dao<Orders> {
 				Long customerId = resultSet.getLong("customerId");
 				double cost= resultSet.getDouble("cost");
 				Orders order = new Orders(id, customerId, cost);
+				orders.add(order);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
