@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CustomersDaoMysql implements Dao<Customers>{
+	/**
+	 * This class is responsible for creating, reading, updating and deleting entries in the customers table of the database
+	 */
 	
 	private Connection connection;
 	public CustomersDaoMysql() throws SQLException {

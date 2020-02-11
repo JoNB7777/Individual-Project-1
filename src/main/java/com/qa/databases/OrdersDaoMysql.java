@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class OrdersDaoMysql implements Dao<Orders> {
+	/**
+	 * This class is responsible for creating, reading, updating and deleting entries in the orders table of the database
+	 */
 
 	private Connection connection;
 	public OrdersDaoMysql() throws SQLException {

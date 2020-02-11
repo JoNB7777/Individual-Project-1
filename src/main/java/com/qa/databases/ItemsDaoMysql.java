@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class ItemsDaoMysql implements Dao<Items> {
+	/**
+	 * This class is responsible for creating, reading, deleting and updating entries in the items table of the database
+	 */
 
 	private Connection connection;
 	public ItemsDaoMysql() throws SQLException {
