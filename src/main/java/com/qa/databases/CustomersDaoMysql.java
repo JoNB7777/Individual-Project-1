@@ -56,7 +56,7 @@ public class CustomersDaoMysql implements Dao<Customers>{
 		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
-			statement.executeUpdate("update customers(name) values('" + customer.getName() + " ') where id = 1");
+			statement.executeUpdate("update customers set name'" + customer.getName() + " ') where id = ' " + customer.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
@@ -69,7 +69,7 @@ public class CustomersDaoMysql implements Dao<Customers>{
 		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
-			statement.executeUpdate("delete * from customers where id = 1");
+			statement.executeUpdate("delete * from customers where id = ' " + id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

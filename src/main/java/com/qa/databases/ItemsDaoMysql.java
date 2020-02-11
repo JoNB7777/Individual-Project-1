@@ -51,8 +51,17 @@ public class ItemsDaoMysql implements Dao<Items> {
 		return items;
 	}
 
-	public void update(Items t) {
-		// TODO Auto-generated method stub
+	public void update(Items item) {
+		/**
+		 * Updates the price of an item in the items table
+		 * The details of the item that is to be updated are stored in the object item
+		 */
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("update items set item_value'" + item.getItemValue() + " ') where id = ' " + item.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 	}
 
@@ -63,7 +72,7 @@ public class ItemsDaoMysql implements Dao<Items> {
 		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
-			statement.executeUpdate("delete * from items where id = 1");
+			statement.executeUpdate("delete * from items where id = ' " + id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

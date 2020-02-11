@@ -52,19 +52,29 @@ public class OrdersDaoMysql implements Dao<Orders> {
 		return null;
 	}
 
-	public void update(Orders t) {
-		// TODO Auto-generated method stub
+	public void update(Orders order) {
+		/**
+		 * Updates the cost of an order in the orders table
+		 * The details of that order are saved in the attributes of the object order
+		 */
+		
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("update orders set cost'" + order.getPrice() + " ') where id = ' " + order.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 	}
 
 	public void delete(int id) {
 		/**
-		 * deletes an entry from the orders table
+		 * deletes a row from the orders table
 		 * Parameter id specifies the id of the entry to be deleted
 		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
-			statement.executeUpdate("delete * from orders where id = 1");
+			statement.executeUpdate("delete * from orders where id = ' " + id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
