@@ -39,12 +39,22 @@ public class CustomersDaoMysql implements Dao<Customers>{
 		return customers;
 	}
 	
-	public void update(Customers t) {
-		// TODO Auto-generated method stub
+	public void update(Customers customer) {
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("update customers(name) values('" + customer.getName() + " ') where id = 1");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 	}
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("delete * from customers where id = 1");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 	}
 	

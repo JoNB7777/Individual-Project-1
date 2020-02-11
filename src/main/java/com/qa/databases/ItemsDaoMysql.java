@@ -47,7 +47,12 @@ public class ItemsDaoMysql implements Dao<Items> {
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("delete * from items where id = 1");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 	}
 

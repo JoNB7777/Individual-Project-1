@@ -14,8 +14,18 @@ public class OrderItemsDaoMysql implements Dao<OrderItems> {
 		this.connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/IMSDB", "root", "root"); 
 	}
 
-	public void create(OrderItems t) {
-		// TODO Auto-generated method stub
+	public void create(OrderItems orderItem) {
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("insert into order_items(id) values('" + orderItem.getId() + "')");
+			statement.executeUpdate("insert into order_items(quantity) values('" + orderItem.getQuantity() + "')");
+			statement.executeUpdate("insert into order_items(item_value) values('" + orderItem.getItemValue() + "')");
+			statement.executeUpdate("insert into order_items(item_id) values('" + orderItem.getItemId() + "')");
+			statement.executeUpdate("insert into order_items(order_id) values('" + orderItem.getOrderId() + "')");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 	}
 
@@ -45,7 +55,12 @@ public class OrderItemsDaoMysql implements Dao<OrderItems> {
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
+			Statement statement = connection.createStatement();
+			statement.executeUpdate("delete * from order_items where id = 1");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 	}
 
