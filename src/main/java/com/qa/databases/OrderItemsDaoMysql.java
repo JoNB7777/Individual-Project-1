@@ -63,6 +63,10 @@ public class OrderItemsDaoMysql implements Dao<OrderItems> {
 	}
 
 	public void delete(int id) {
+		/**
+		 * Deletes an entry from the order_items table of the database
+		 * id specifies the id the order_item that is to be deleted has in the system
+		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("delete * from order_items where id = 1");

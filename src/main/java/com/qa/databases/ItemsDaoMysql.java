@@ -17,6 +17,10 @@ public class ItemsDaoMysql implements Dao<Items> {
 		this.connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/IMSDB", "root", "root"); 
 	}
 	public void create(Items item) {
+		/**
+		 * Creates a new row in the items table
+		 * The attributes of the parameter item will be the individual the column entries for that row
+		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("insert into items(name) values('" + item.getItemName() + "')");
@@ -27,6 +31,9 @@ public class ItemsDaoMysql implements Dao<Items> {
 	}
 
 	public ArrayList<Items> readAll() {
+		/**
+		 * Reads all entries from the items table
+		 */
 		ArrayList<Items> items = new ArrayList<Items>();
 		try {
 			Statement statement = connection.createStatement();
@@ -50,6 +57,10 @@ public class ItemsDaoMysql implements Dao<Items> {
 	}
 
 	public void delete(int id) {
+		/**
+		 * Deletes an order from the items table
+		 * Parameter id specifies the id of the entry to be deleted
+		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("delete * from items where id = 1");

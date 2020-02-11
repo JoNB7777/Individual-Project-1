@@ -17,6 +17,10 @@ public class CustomersDaoMysql implements Dao<Customers>{
 		this.connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/IMSDB", "root", "root"); 
 	}
 	public void create(Customers customer) {
+		/**
+		 * Creates a new row in the customers table
+		 * The attributes of the parameter customer will be the individual the column entries for that row
+		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("insert into customers(name) values('" + customer.getName() + "')");
@@ -26,6 +30,9 @@ public class CustomersDaoMysql implements Dao<Customers>{
 		
 	}
 	public ArrayList<Customers> readAll() {
+		/**
+		 * Reads all entries from the customers table
+		 */
 		ArrayList<Customers> customers = new ArrayList<Customers>();
 		try {
 			Statement statement = connection.createStatement();
@@ -43,6 +50,10 @@ public class CustomersDaoMysql implements Dao<Customers>{
 	}
 	
 	public void update(Customers customer) {
+		/**
+		 * updates a customer name in the customers database
+		 * The attributes of the customer whose entry is to be changed are stored in the Customers class instance customer
+		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("update customers(name) values('" + customer.getName() + " ') where id = 1");
@@ -52,6 +63,10 @@ public class CustomersDaoMysql implements Dao<Customers>{
 		
 	}
 	public void delete(int id) {
+		/**
+		 * deletes a customer from the customers database
+		 * Id specifies the id of the customer to be deleted
+		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("delete * from customers where id = 1");

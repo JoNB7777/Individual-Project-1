@@ -19,8 +19,8 @@ public class OrdersDaoMysql implements Dao<Orders> {
 	
 	public void create(Orders order) {
 		/**
-		 * creates a new entry in the orders table
-		 * order is an instance of the Orders class in which the details for the new entry to be created are stored
+		 * Creates a new row in the orders table
+		 * The attributes of the parameter order will be the individual the column entries for that row
 		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
@@ -33,7 +33,7 @@ public class OrdersDaoMysql implements Dao<Orders> {
 
 	public ArrayList<Orders> readAll() {
 		/**
-		 * reads an entry from the orders table
+		 * reads all entries from the orders table
 		 */
 		ArrayList<Orders> orders = new ArrayList<Orders>();
 		try {
@@ -58,6 +58,10 @@ public class OrdersDaoMysql implements Dao<Orders> {
 	}
 
 	public void delete(int id) {
+		/**
+		 * deletes an entry from the orders table
+		 * Parameter id specifies the id of the entry to be deleted
+		 */
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("delete * from orders where id = 1");
